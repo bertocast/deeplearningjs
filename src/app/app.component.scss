@@ -1,0 +1,53 @@
+.wrapper {
+  display: inline-flex;
+  justify-content: flex-end;
+  border: 10px solid lighten(#ef6c00, 15%);
+  transition: border-color .2s ease-in;
+  &:hover {
+    border: 10px solid #ef6c00;
+    transition: border-color .2s ease-in;
+  }
+}
+
+canvas {
+  cursor: crosshair;
+}
+
+.row {
+  margin: 10vh 5vw;
+}
+
+.flip {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+html, body {
+  height: 100%;
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -60px;
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.site-footer, .page-wrap:after {
+  padding-top: 10px;
+  height: 50px;
+}
+
+.site-footer {
+  background: #efefef;
+  text-align: center;
+}
+
+input {
+  text-align: center;
+}
+

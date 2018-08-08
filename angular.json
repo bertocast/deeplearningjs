@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tensorflowApp": {
+    "deeplearningjs": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tensorflowApp",
+            "outputPath": "dist/deeplearningjs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tensorflowApp:build"
+            "browserTarget": "deeplearningjs:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tensorflowApp:build:production"
+              "browserTarget": "deeplearningjs:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tensorflowApp:build"
+            "browserTarget": "deeplearningjs:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "tensorflowApp-e2e": {
+    "deeplearningjs-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tensorflowApp:serve"
+            "devServerTarget": "deeplearningjs:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "tensorflowApp:serve:production"
+              "devServerTarget": "deeplearningjs:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "tensorflowApp"
+  "defaultProject": "deeplearningjs"
 }

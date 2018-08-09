@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.generateButton = document.getElementById('generate-button');
     console.log('Loading model...');
-    tf.loadModel('/assets/char_rnn/model.json').then((model) => {
+    tf.loadModel('assets/char_rnn/model.json').then((model) => {
       this.cervantesModel = model;
       console.log('Model load.');
       this.enableGeneration();
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
 
     this.generatedSentence = seed;
     this.checked = true;
-    this.generateButton.innerText = 'Pay attention to Nietzsche\'s words';
+    this.generateButton.innerText = 'Presta atención a lo que dice Cervantes';
 
     for (let i = 0; i < CHARS_TO_GENERATE; i++) {
       const indexTensor = tf.tidy(() => {

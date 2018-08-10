@@ -1,25 +1,2 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm">
-      <h1>Cervantes Bot</h1>
-
-
-      <hr>
-
-      <input #input type="text"  class="form-control"
-             placeholder="Dale una pista a Cervantes">
-    </div>
-    <div class="row" style="display: flex; justify-content: center; padding-top: 15px;">
-      <button id="generate-button" [disabled]="checked" (click)="cervantesTalk(input.value)">Leyendo el Quijote de arriba a abajo...</button>
-    </div>
-    <div class="row">
-      <blockquote>
-        {{generatedSentence}}
-      </blockquote>
-    </div>
-
-  </div>
-</div>
-
-
+<app-layout></app-layout>
 <router-outlet></router-outlet>

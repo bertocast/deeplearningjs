@@ -1,0 +1,60 @@
+<div class="profile-page sidebar-collapse">
+  <div class="page-header header-filter" data-parallax="true"
+       style="background-image: url('../../assets/img/best-books-2017-header.jpg');"></div>
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto">
+            <div class="section text-center">
+              <h1>Cervantes Bot</h1>
+              <h6 class="title text-center">He can write new stories of Don Quijote de la Mancha</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 ml-auto mr-auto">
+          <div class="form-group">
+            <label for="exampleInput1" class="bmd-label-floating">Give Cervantes some hint of what to write
+              about</label>
+            <input #input type="text" class="form-control" id="exampleInput1">
+            <span class="bmd-help">Try not to be too brief!</span>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 ml-auto mr-auto">
+            <button type="button" id="generate-button" class="btn" data-toggle="tooltip" data-placement="bottom"
+                    [disabled]="checked" (click)="cervantesTalk(input.value)" data-container="body">Give a minute! I'm poring over Don Quijote
+              de la Mancha...
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 ml-auto mr-auto">
+            <blockquote>
+              {{generatedSentence}}
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer footer-default">
+      <div class="container">
+        <nav class="float-left">
+          <ul>
+            <li>
+              <a href="/">
+                Alberto Castaño
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright float-right">
+          &copy; 2018
+        </div>
+      </div>
+    </footer>
+  </div>

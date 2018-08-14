@@ -12,49 +12,33 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 ml-auto mr-auto">
-          <div class="form-group">
-            <label for="exampleInput1" class="bmd-label-floating">Give Cervantes some hint of what to write
-              about</label>
-            <input #input type="text" class="form-control" id="exampleInput1">
-            <span class="bmd-help">Try not to be too brief!</span>
+        <div class="row justify-content-md-center">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="exampleInput1" class="bmd-label-floating">Give Cervantes some hint of what to write
+                about</label>
+              <input #input type="text" class="form-control" id="exampleInput1">
+              <span class="bmd-help">Try not to be too brief!</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5 ml-auto mr-auto">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto">
             <button type="button" id="generate-button" class="btn" data-toggle="tooltip" data-placement="bottom"
-                    [disabled]="checked" (click)="cervantesTalk(input.value)" data-container="body">Give a minute! I'm poring over Don Quijote
-              de la Mancha...
+                    [disabled]="checked" (click)="cervantesTalk(input.value)" data-container="body"
+            style="white-space: normal">
+              Give me a minute! I'm poring over Don Quijote de la Mancha...
             </button>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 ml-auto mr-auto">
-            <blockquote>
-              {{generatedSentence}}
-            </blockquote>
+        <div class="row justify-content-md-center">
+          <div class="col-md-12">
+            <div class="section text-justify">
+              <p id="generated-text"></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <footer class="footer footer-default">
-      <div class="container">
-        <nav class="float-left">
-          <ul>
-            <li>
-              <a href="/">
-                Alberto Castaño
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="copyright float-right">
-          &copy; 2018
-        </div>
-      </div>
-    </footer>
+  <app-footer></app-footer>
   </div>

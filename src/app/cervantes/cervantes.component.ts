@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as dicts from './cervantesConfig';
 import * as tf from '@tensorflow/tfjs';
 
@@ -6,14 +6,16 @@ const charIndexs = dicts.charIndexs;
 const indexChars = dicts.indexChars;
 
 const INPUT_LENGTH = 40;
-const CHARS_TO_GENERATE = 500;
-const DIVERSITY = 0.4;
+const CHARS_TO_GENERATE = 3000;
+const DIVERSITY = 0.7;
 
 @Component({
   selector: 'app-cervantes',
   templateUrl: './cervantes.component.html',
   styleUrls: ['./cervantes.component.css']
 })
+
+
 export class CervantesComponent implements OnInit {
 
   cervantesModel: tf.Model;
@@ -22,9 +24,11 @@ export class CervantesComponent implements OnInit {
   checked: boolean;
 
   ngOnInit() {
+    this.generatedSentence = document.getElementById('generated-text');
+    this.generatedSentence.innerText = '';
     this.generateButton = document.getElementById('generate-button');
     console.log('Loading model...');
-    tf.loadModel('assets/char_rnn/model.json').then((model) => {
+    tf.loadModel('assets/char_rnn/model.json2').then((model) => {
       this.cervantesModel = model;
       console.log('Model load.');
       this.enableGeneration();
@@ -32,9 +36,8 @@ export class CervantesComponent implements OnInit {
   }
 
   enableGeneration() {
-    this.generateButton.innerText = 'Generate new text';
+    this.generateButton.innerText = 'Lets write a new chapter!';
     this.checked = false;
-    this.generateButton.title = 'Lets write a new chapter!';
   }
 
 
@@ -42,7 +45,7 @@ export class CervantesComponent implements OnInit {
 
     this.generatedSentence = seed;
     this.checked = true;
-    this.generateButton.innerText = 'Presta atención a lo que dice Cervantes';
+    this.generateButton.innerText = 'Pay attention to Cervantes words';
 
     for (let i = 0; i < CHARS_TO_GENERATE; i++) {
       const indexTensor = tf.tidy(() => {

@@ -8,12 +8,14 @@ import { UiModule } from './ui/ui.module';
 import { CervantesComponent } from './cervantes/cervantes.component';
 import { HomeComponent } from './home/home.component';
 import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
+import { RockPaperScissorsComponent } from './rock-paper-scissors/rock-paper-scissors.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CervantesComponent,
     HomeComponent,
+    RockPaperScissorsComponent,
   ],
   imports: [
     BrowserModule,

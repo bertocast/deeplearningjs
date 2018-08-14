@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@nicky-lenaers/ngx-scroll-to": "^1.0.0",
+    "@tensorflow-models/knn-classifier": "^0.2.2",
+    "@tensorflow-models/mobilenet": "^0.2.2",
     "@tensorflow/tfjs": "^0.12.3",
     "zone.js": "^0.8.26"
   },

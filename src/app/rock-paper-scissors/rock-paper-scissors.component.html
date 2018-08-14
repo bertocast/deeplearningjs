@@ -1,0 +1,92 @@
+<div class="profile-page sidebar-collapse">
+  <div class="page-header header-filter" data-parallax="true"
+       style="background-image: url('../../assets/img/rockpaper.jpg');"></div>
+  <div class="main main-raised">
+    <div class="profile-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto">
+            <div class="section text-center">
+              <h1>Rock Paper Scissors </h1>
+              <h6 class="title text-center">He will beat you.</h6>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <video #video id="video" autoplay></video>
+          </div>
+          <div class="col-md-6">
+              <button id="train-rock-button" type="button" class="btn btn-outline-danger">Train Rock</button>
+              <span id="train-rock-span">No examples added</span>
+              <br>
+              <button id="train-paper-button" type="button" class="btn btn-outline-danger">Train Paper</button>
+              <span id="train-paper-span"> No examples added</span>
+              <br>
+              <button id="train-scissors-button" type="button" class="btn btn-outline-danger">Train Scissors</button>
+              <span id="train-scissors-span"> No examples added</span>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xs-6">
+            <div class="section text-center">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">
+                Instructions
+              </button>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="section text-center">
+            <button type="button" class="btn btn-success" id="start-game-button" disabled>Start a game</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center" style="display: flex">
+          <div class="section text-center">
+          <span id="game-status">Train your gestures above then start a game!</span>
+          </div>
+        </div>
+
+        <div class="row justify-content-around">
+          <div class="col-3">
+            <i id="rock-you" class="far fa-hand-rock fa-10x" hidden></i>
+            <i id="paper-you" class="far fa-hand-paper fa-10x" hidden></i>
+            <i id="scissors-you" class="far fa-hand-scissors fa-10x" hidden></i>
+            <img id="you" class="float-right" hidden src="">
+          </div>
+          <div class="col-_3">
+            <i id="rock-cpu" class="far fa-hand-rock fa-10x" hidden></i>
+            <i id="paper-cpu" class="far fa-hand-paper fa-10x" hidden></i>
+            <i id="scissors-cpu" class="far fa-hand-scissors fa-10x" hidden></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">How do I play?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        First, you have to train the neural network to recognize what are you going to play: rock, paper or scissors.
+        Press one of the 3 training buttons and hold it while the AI takes images and learn to classify the different shapes.
+        Once it has seen at least 10 frames, you will be ready to go on to the next button. Try to move your hand around, in and out while the AI is taking pictures for a better accuracy.
+        When you are done training the algorithm, you're ready to play. Click the <b>Start a game</b> button and keep your hand in front of the camera. The AI will recognize the shape of your hand and will do a random play.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

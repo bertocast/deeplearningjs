@@ -1,0 +1,5 @@
+div.video__frame {
+  -webkit-box-shadow: 0 0 55px 2px rgba(0, 0, 0, 0.71);
+  -moz-box-shadow: 0 0 55px 2px rgba(0, 0, 0, 0.71);
+  box-shadow: 0 0 55px 2px rgba(0, 0, 0, 0.71);
+}

@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Deploy to GHP
+
+`ng build --prod --base-href "https://bertocast.github.io"` and `ngh --dir dist\deeplearningjs -r https://github.com/bertocast/bertocast.github.io.git -b master`

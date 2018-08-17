@@ -30,6 +30,12 @@ const trainSpanIds = [
   'train-scissors-span',
 ];
 
+const trainProgressIds = [
+  'train-rock-pg',
+  'train-paper-pg',
+  'train-scissors-pg',
+];
+
 const winnerMatrix = [
   [0, 1, -1],
   [-1, 0, 1],
@@ -74,7 +80,8 @@ export class RockPaperScissorsComponent implements OnInit {
   private timer: number;
   private mobilenet: any;
   private video: HTMLVideoElement;
-  private webCam: any;
+  private cpuMoveSpan: HTMLElement;
+  private yourMoveSpan: HTMLElement;
 
   constructor() {
 
@@ -115,6 +122,8 @@ export class RockPaperScissorsComponent implements OnInit {
     };
 
     this.gameStatus = document.getElementById('game-status');
+    this.cpuMoveSpan = document.getElementById('cpu-move');
+    this.yourMoveSpan = document.getElementById('your-move');
 
     this.gestureYouImages = gestureYouIds.map((val) => {
       return document.getElementById(val);
@@ -170,6 +179,7 @@ export class RockPaperScissorsComponent implements OnInit {
     }
     this.gaming = true;
     this.startButton.disabled = true;
+    this.cpuMoveSpan.hidden = false;
     this.countDownTimer = new CountDownTimer(5000, 20);
     this.countDownTimer.addTickFn((msLeft) => {
       this.gameStatus.innerText = (msLeft / 1000).toFixed(1) +
@@ -201,17 +211,13 @@ export class RockPaperScissorsComponent implements OnInit {
     }
     for (let i = 0; i < 3; i++) {
       this.gestureCpuImages[i].hidden = (i !== computerMove);
+      this.gestureYouImages[i].hidden = true;
     }
     this.startButton.disabled = false;
     this.hiddenCanvas.getContext('2d').drawImage(
       this.video, 0, 0, IMAGE_SIZE, IMAGE_SIZE);
     this.youImg.src = this.hiddenCanvas.toDataURL();
-    this.youImg.onload = () => {
-      for (let i = 0; i < 3; i++) {
-        this.gestureYouImages[i].hidden = true;
-      }
-      this.youImg.hidden = false;
-    };
+    this.youImg.hidden = false;
   }
 
   /**
@@ -246,6 +252,7 @@ export class RockPaperScissorsComponent implements OnInit {
     const numClasses = this.knn.getNumClasses();
     if (numClasses > 0) {
       logits = infer();
+      this.yourMoveSpan.hidden = false;
       this.knn.predictClass(logits, TOPK)
         .then((res) => {
           this.currentMove = res.classIndex;
@@ -258,21 +265,17 @@ export class RockPaperScissorsComponent implements OnInit {
             }
 
             const exampleCount = this.knn.getClassExampleCount();
-            // Update img if in game
-            if (this.gaming) {
-              this.youImg.hidden = true;
-              this.gestureYouImages[i].hidden = res.classIndex !== i;
-            }
+
+            this.youImg.hidden = true;
+            this.gestureYouImages[i].hidden = res.classIndex !== i;
 
             // Update info text
             if (exampleCount[i] > 0) {
               this.infoTexts[i].innerText =
-                ` ${exampleCount[i]} examples - ${res.confidences[i] * 100}%`;
-              if (exampleCount[i] > 10) {
-                const button = document.getElementById(trainButtonIds[i]);
-                button.classList.remove('btn-outline-danger');
-                button.classList.add('btn-outline-success');
-              }
+                ` ${exampleCount[i]} examples`;
+              const progressBar = document.getElementById(trainProgressIds[i]);
+              progressBar.style.width = `${res.confidences[i] * 100}%`;
+              progressBar.setAttribute('aria-value-now', `${res.confidences[i] * 100}`);
             }
           }
           if (!this.firstExampleTrained) {

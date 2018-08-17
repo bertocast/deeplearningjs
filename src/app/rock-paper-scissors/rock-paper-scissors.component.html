@@ -13,53 +13,76 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="col-md-6">
-            <video #video id="video" autoplay></video>
+          <div class="col-auto text-center">
+            <div class="video__frame">
+              <video #video id="video" autoplay></video>
+            </div>
           </div>
-          <div class="col-md-6">
-              <button id="train-rock-button" type="button" class="btn btn-outline-danger">Train Rock</button>
+        </div>
+        <div class="section text-center">
+          <div class="row justify-content-center">
+            <div class="col-2 col-sm-auto">
+              <button id="train-rock-button" type="button" class="btn btn-success">Train Rock</button>
+              <div class="progress">
+                <div id="train-rock-pg" class="progress-bar bg-success" role="progressbar" style="width: 0%"
+                     aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
               <span id="train-rock-span">No examples added</span>
-              <br>
-              <button id="train-paper-button" type="button" class="btn btn-outline-danger">Train Paper</button>
+            </div>
+            <div class="col-2 col-sm-auto">
+              <button id="train-paper-button" type="button" class="btn btn-primary">Train Paper</button>
+              <div class="progress">
+                <div id="train-paper-pg" class="progress-bar bg-primary" role="progressbar" style="width: 0%"
+                     aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
               <span id="train-paper-span"> No examples added</span>
-              <br>
-              <button id="train-scissors-button" type="button" class="btn btn-outline-danger">Train Scissors</button>
+            </div>
+            <div class="col-2 col-sm-auto">
+              <button id="train-scissors-button" type="button" class="btn btn-danger">Train Scissors</button>
+              <div class="progress">
+                <div id="train-scissors-pg" class="progress-bar bg-danger" role="progressbar" style="width: 0%"
+                     aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
               <span id="train-scissors-span"> No examples added</span>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-xs-6">
-            <div class="section text-center">
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">
-                Instructions
-              </button>
             </div>
           </div>
-          <div class="col-xs-6">
-            <div class="section text-center">
-            <button type="button" class="btn btn-success" id="start-game-button" disabled>Start a game</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center" style="display: flex">
           <div class="section text-center">
-          <span id="game-status">Train your gestures above then start a game!</span>
+            <div class="row justify-content-center">
+              <div class="col-xs-6">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">
+                  Instructions
+                </button>
+              </div>
+              <div class="col-xs-6">
+                <button type="button" class="btn btn-default" id="start-game-button" disabled>Start a game</button>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-xs-6">
+                <span id="game-status"></span>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="row justify-content-around">
-          <div class="col-3">
-            <i id="rock-you" class="far fa-hand-rock fa-10x" hidden></i>
-            <i id="paper-you" class="far fa-hand-paper fa-10x" hidden></i>
-            <i id="scissors-you" class="far fa-hand-scissors fa-10x" hidden></i>
-            <img id="you" class="float-right" hidden src="">
-          </div>
-          <div class="col-_3">
-            <i id="rock-cpu" class="far fa-hand-rock fa-10x" hidden></i>
-            <i id="paper-cpu" class="far fa-hand-paper fa-10x" hidden></i>
-            <i id="scissors-cpu" class="far fa-hand-scissors fa-10x" hidden></i>
+          <div class="row justify-content-center ">
+            <div class="col-xs-6 col-auto">
+              <i id="rock-you" class="far fa-hand-rock fa-10x" hidden></i>
+              <i id="paper-you" class="far fa-hand-paper fa-10x" hidden></i>
+              <i id="scissors-you" class="far fa-hand-scissors fa-10x" hidden></i>
+              <img id="you" class="float-right" hidden src="">
+              <br>
+              <span id="your-move" hidden><b>Your move</b></span>
+            </div>
+            <div class="col-xs-6 col-auto">
+              <i id="rock-cpu" class="far fa-hand-rock fa-10x" hidden></i>
+              <i id="paper-cpu" class="far fa-hand-paper fa-10x" hidden></i>
+              <i id="scissors-cpu" class="far fa-hand-scissors fa-10x" hidden></i>
+              <br>
+              <span id="cpu-move" hidden><b>Computer's move</b></span>
+            </div>
           </div>
         </div>
       </div>
@@ -69,7 +92,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,9 +104,12 @@
       </div>
       <div class="modal-body">
         First, you have to train the neural network to recognize what are you going to play: rock, paper or scissors.
-        Press one of the 3 training buttons and hold it while the AI takes images and learn to classify the different shapes.
-        Once it has seen at least 10 frames, you will be ready to go on to the next button. Try to move your hand around, in and out while the AI is taking pictures for a better accuracy.
-        When you are done training the algorithm, you're ready to play. Click the <b>Start a game</b> button and keep your hand in front of the camera. The AI will recognize the shape of your hand and will do a random play.
+        Press one of the 3 training buttons and hold it while the AI takes images and learn to classify the different
+        shapes.
+        Once it has seen at least 10 frames, you will be ready to go on to the next button. Try to move your hand
+        around, in and out while the AI is taking pictures for a better accuracy.
+        When you are done training the algorithm, you're ready to play. Click the <b>Start a game</b> button and keep
+        your hand in front of the camera. The AI will recognize the shape of your hand and will do a random play.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

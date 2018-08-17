@@ -28,7 +28,7 @@ export class CervantesComponent implements OnInit {
     this.generatedSentence.innerText = '';
     this.generateButton = document.getElementById('generate-button');
     console.log('Loading model...');
-    tf.loadModel('assets/char_rnn/model.json2').then((model) => {
+    tf.loadModel('assets/char_rnn/model.json').then((model) => {
       this.cervantesModel = model;
       console.log('Model load.');
       this.enableGeneration();
@@ -56,7 +56,7 @@ export class CervantesComponent implements OnInit {
       const index_pred = await indexTensor.data();
       indexTensor.dispose();
       seed += indexChars[index_pred];
-      this.generatedSentence = seed;
+      this.generatedSentence.innerText = seed;
       await tf.nextFrame();
     }
     this.enableGeneration();

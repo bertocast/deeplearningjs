@@ -26,6 +26,11 @@
     "@tensorflow-models/knn-classifier": "^0.2.2",
     "@tensorflow-models/mobilenet": "^0.2.2",
     "@tensorflow/tfjs": "^0.12.3",
+    "blueimp-canvas-to-blob": "^3.14.0",
+    "ng2-img-max": "^2.1.18",
+    "ng2-img-tools": "^1.1.5",
+    "rxjs": "^6.3.2",
+    "rxjs-compat": "^6.3.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

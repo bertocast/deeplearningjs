@@ -24,11 +24,12 @@ export class CervantesComponent implements OnInit {
   checked: boolean;
 
   ngOnInit() {
+    this.checked = true;
     this.generatedSentence = document.getElementById('generated-text');
     this.generatedSentence.innerText = '';
     this.generateButton = document.getElementById('generate-button');
     console.log('Loading model...');
-    tf.loadModel('assets/char_rnn/model.json').then((model) => {
+    tf.loadModel('assets/char_rnn/model.json2').then((model) => {
       this.cervantesModel = model;
       console.log('Model load.');
       this.enableGeneration();
@@ -43,7 +44,7 @@ export class CervantesComponent implements OnInit {
 
   async cervantesTalk(seed) {
 
-    this.generatedSentence = seed;
+    this.generatedSentence.innerText = seed;
     this.checked = true;
     this.generateButton.innerText = 'Pay attention to Cervantes words';
 
@@ -90,8 +91,7 @@ export class CervantesComponent implements OnInit {
       const char = sentence.charAt(i);
       buffer.set(1, 0, i, charIndexs[char]);
     }
-    const input = buffer.toTensor();
-    return input;
+    return buffer.toTensor();
   }
 
 

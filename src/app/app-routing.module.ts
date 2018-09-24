@@ -6,8 +6,8 @@ import {RockPaperScissorsComponent} from './rock-paper-scissors/rock-paper-sciss
 import {StyleTransferComponent} from './style-transfer/style-transfer.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'cervantes', component: CervantesComponent},
   {path: 'rps', component: RockPaperScissorsComponent},
   {path: 'style-transfer', component: StyleTransferComponent}

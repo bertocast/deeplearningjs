@@ -7,7 +7,7 @@ const indexChars = dicts.indexChars;
 
 const INPUT_LENGTH = 40;
 const CHARS_TO_GENERATE = 3000;
-const DIVERSITY = 0.7;
+const DIVERSITY = 0.3;
 
 @Component({
   selector: 'app-cervantes',
@@ -29,7 +29,7 @@ export class CervantesComponent implements OnInit {
     this.generatedSentence.innerText = '';
     this.generateButton = document.getElementById('generate-button');
     console.log('Loading model...');
-    tf.loadModel('assets/char_rnn/model.json2').then((model) => {
+    tf.loadModel('assets/char_rnn/model.json').then((model) => {
       this.cervantesModel = model;
       console.log('Model load.');
       this.enableGeneration();
